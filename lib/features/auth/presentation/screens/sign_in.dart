@@ -66,7 +66,7 @@ class _SignInPageState extends State<SignInPage> {
                   isObscure: true,
                 ),
                 const SizedBox(height: 25),
-                const AuthGradientButton(buttonText: 'Sign Up'),
+                const AuthGradientButton(buttonText: 'Sign In'),
                 const SizedBox(height: 15),
                 InkWell(
                   onTap: () {
@@ -82,10 +82,11 @@ class _SignInPageState extends State<SignInPage> {
                       children: [
                         TextSpan(
                           text: 'Sign Up',
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                color: AppPalette.gradient2,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppPalette.gradient2,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ],
                     ),
