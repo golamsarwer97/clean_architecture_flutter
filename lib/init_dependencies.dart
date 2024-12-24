@@ -7,6 +7,9 @@ import './features/auth/data/repository/auth_repository_impl.dart';
 import './features/auth/domin/repository/auth_repository.dart';
 import './features/auth/domin/usecases/user_sign_up_usecase.dart';
 import './features/auth/presentation/bloc/auth_bloc.dart';
+import './features/auth/domin/usecases/user_sign_in_usecase.dart';
+import './common/cubits/app_user/app_user_cubit.dart';
+import './features/auth/domin/usecases/current_user_usecase.dart';
 
 final sl = GetIt.instance;
 
@@ -19,6 +22,9 @@ Future<void> initDependencies() async {
   );
 
   sl.registerLazySingleton(() => supabase.client);
+
+  // Common
+  sl.registerLazySingleton(() => AppUserCubit());
 }
 
 void _initAuth() {
@@ -37,9 +43,20 @@ void _initAuth() {
     ..registerFactory(
       () => UserSignUpUsecase(authRepository: sl()),
     )
+    ..registerFactory(
+      () => UserSignInUsecase(authRepository: sl()),
+    )
+    ..registerFactory(
+      () => CurrentUserUsecase(authRepository: sl()),
+    )
 
     // AuthBloc
     ..registerLazySingleton(
-      () => AuthBloc(userSignUpUsecase: sl()),
+      () => AuthBloc(
+        userSignUpUsecase: sl(),
+        userSignInUsecase: sl(),
+        currentUserUsecase: sl(),
+        appUserCubit: sl(),
+      ),
     );
 }
