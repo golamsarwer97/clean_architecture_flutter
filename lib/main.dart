@@ -6,6 +6,7 @@ import './features/auth/presentation/screens/sign_in.dart';
 import './init_dependencies.dart';
 import './features/auth/presentation/bloc/auth_bloc.dart';
 import './common/cubits/app_user/app_user_cubit.dart';
+import './features/blog/presentation/screens/blog_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,13 +53,10 @@ class _MyAppState extends State<MyApp> {
         },
         builder: (context, isLoggedIn) {
           if (isLoggedIn) {
-            return const Scaffold(
-              body: Center(
-                child: Text('Logged In'),
-              ),
-            );
+            return const BlogScreen();
           }
-          return const SignInPage();
+          // return const SignInPage();
+          return const BlogScreen();
         },
       ),
     );
