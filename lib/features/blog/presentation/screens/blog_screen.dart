@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import './add_blog.dart';
+import 'add_new_blog.dart';
 
 class BlogScreen extends StatefulWidget {
   const BlogScreen({super.key});
